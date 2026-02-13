@@ -32,16 +32,27 @@ This document explains how to run the project locally, outlines the directory st
 ## Project Structure (Top Level)
 
 controllers/ Application controllers (business logic)
+
 init/ Database initialization and seed scripts
+
 models/ Mongoose schemas and models
+
 public/ Static assets (CSS, JavaScript, images)
+
 routes/ Express route definitions
+
 utils/ Helper utilities and shared modules
+
 views/ EJS templates (server-rendered views)
+
 ListingSchema.js Additional listing schema
+
 app.js Application entry point
+
 cloudConfig.js Cloud and image storage configuration
+
 package.json Project dependencies and scripts
+
 .gitignore Ignored files and directories
 
 ---
@@ -70,12 +81,19 @@ Install all required Node.js dependencies using npm.
 ### Step 3: Configure Environment Variables
 
 Create a .env file in the project root directory and add the following variables:
+
 MONGO_URI=your_mongodb_connection_string
+
 PORT=5000
+
 CLOUD_NAME=your_cloud_name
+
 CLOUD_API_KEY=your_api_key
+
 CLOUD_API_SECRET=your_api_secret
+
 SESSION_SECRET=your_session_secret
+
 
 ---
 
