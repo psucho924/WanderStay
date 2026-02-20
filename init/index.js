@@ -1,3 +1,4 @@
+require("dotenv").config({ path: "../.env" });
 const mongoose = require("mongoose");
 const initData = require("./data");
 const Listing = require("../models/listing");
@@ -10,9 +11,9 @@ main()
   .catch((err) => {
     console.log("error in connecting to db: " + err);
   });
-
+console.log("MONGODB_URI:", process.env.MONGODB_URI);
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/wanderStay");
+  await mongoose.connect(`${process.env.MONGODB_URI}/wanderStay`);
 }
 
 // helper → random categories (1–2 per listing)

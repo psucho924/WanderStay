@@ -1,17 +1,19 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const Review = require("./review");
 const { cloudinary } = require("../cloudConfig.js");
-main()
-  .then(() => {
-    console.log("connected to dp in listing.js successfully");
-  })
-  .catch((err) => {
-    console.log("error in connecting to db in listing.js: " + err);
-  });
+// main()
+//   .then(() => {
+//     console.log("connected to dp in listing.js successfully");
+//   })
+//   .catch((err) => {
+//     console.log("error in connecting to db in listing.js: " + err);
+//   });
 
-async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/wanderStay");
-}
+// console.log("MONGODB_URI:", process.env.MONGODB_URI);
+// async function main() {
+//   await mongoose.connect(`${process.env.MONGODB_URI}/wanderStay`);
+// }
 
 const listingSchema = mongoose.Schema({
   title: {

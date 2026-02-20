@@ -1,6 +1,7 @@
 if (process.env.NODE_ENV != "development") {
   require("dotenv").config();
 }
+
 // console.log(process.env.SECRET);
 
 const express = require("express");
@@ -15,14 +16,31 @@ const listingRoute = require("./routes/listings");
 const reviewRoute = require("./routes/reviews");
 const wrapAsync = require("./utils/wrapAsync");
 const session = require("express-session");
+const MongoStore = require("connect-mongo").default;
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/users.js");
 const userRoute = require("./routes/users.js");
+const { error } = require("console");
+
+const dbUrl = `${process.env.MONGODB_URI}/wanderStay`;
+
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  crypto: {
+    secret: process.env.SECRET,
+  },
+  touchAfter: 24 * 3600,
+});
+
+store.on("error", () => {
+  console.log("Error in Mongo Session Store " + err);
+});
 
 const sessionOptions = {
-  secret: "mysecretcode",
+  store,
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -70,19 +88,19 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 
 app.listen(port, () => {
-  console.log("app is listening");
+  console.log(`app is listening at port : ${port}`);
 });
 
 main()
   .then(() => {
-    console.log("connected to dp in app.js successfully");
+    console.log("connected to db in app.js successfully");
   })
   .catch((err) => {
     console.log("error in connecting to db in app.js: " + err);
   });
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/wanderStay");
+  await mongoose.connect(dbUrl);
 }
 
 app.get("/favicon.ico", (req, res) => res.sendStatus(204));

@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 
-main()
-  .then(() => {
-    console.log("connected to dp in review.js successfully");
-  })
-  .catch((err) => {
-    console.log("error in connecting to db in listing.js: " + err);
-  });
+// main()
+//   .then(() => {
+//     console.log("connected to dp in review.js successfully");
+//   })
+//   .catch((err) => {
+//     console.log("error in connecting to db in listing.js: " + err);
+//   });
 
-async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/wanderStay");
-}
+// async function main() {
+//   await mongoose.connect(`${process.env.MONGODB_URI}/wanderStay`);
+// }
 
 const reviews = new mongoose.Schema({
   comment: "String",
