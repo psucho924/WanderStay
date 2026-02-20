@@ -1,5 +1,11 @@
 # WanderStay 🌍
 
+## Live Application
+
+🚀 **Live Demo:** https://wanderstay-xew1.onrender.com/listing
+
+---
+
 ## Project Overview
 
 WanderStay is a full-stack, server-rendered travel and accommodation platform built using Node.js and Express. The application allows users to explore, manage, and interact with travel listings through a secure authentication system. It follows a clean MVC architecture with well-separated routes, controllers, models, views (EJS), and static assets.
@@ -72,36 +78,46 @@ Before running the project, ensure the following are installed and configured:
 
 ### Step 1: Clone the Repository
 
-Clone the repository and navigate into the project directory.
+Clone the repository and navigate into the project directory:
+
+```
+git clone https://github.com/psucho924/WanderStay.git
+cd WanderStay
+```
+
+---
 
 ### Step 2: Install Dependencies
 
-Install all required Node.js dependencies using npm.
+```
+npm install
+```
+
+---
 
 ### Step 3: Configure Environment Variables
 
-Create a .env file in the project root directory and add the following variables:
+Create a `.env` file in the project root directory and add the following variables:
 
-MONGO_URI=your_mongodb_connection_string
-
-PORT=5000
-
+```
+MONGODB_URI=your_mongodb_connection_string
+PORT=8080
 CLOUD_NAME=your_cloud_name
-
 CLOUD_API_KEY=your_api_key
-
 CLOUD_API_SECRET=your_api_secret
-
 SESSION_SECRET=your_session_secret
-
+NODE_ENV=development
+```
 
 ---
 
 ### Step 4: Initialize Sample Data (Optional but Recommended)
 
-If you want to populate the database with sample listings and a default user, run the initialization script:
+To populate the database with sample listings and a default user, run:
 
+```
 node init/index.js
+```
 
 This script will:
 
@@ -113,20 +129,35 @@ This script will:
 
 ### Step 5: Start the Application
 
-Run the application using Node.js.
+```
+node app.js
+```
 
 ---
 
-### Step 5: Open in Browser
+### Step 6: Open in Browser
 
 Access the application in your browser at:
+
+```
 http://localhost:8080
+```
 
 ---
 
 ## Application Status
 
 WanderStay should now be running locally. You can explore listings, test authentication workflows, and interact with the complete server-rendered application.
+
+---
+
+## Production Notes
+
+- The application uses server-side rendering (SSR) with EJS.
+- All sensitive credentials are managed via environment variables.
+- Sessions are stored in MongoDB using connect-mongo.
+- Ensure MongoDB Atlas allows external connections when deploying.
+- Do not commit `.env` files to version control.
 
 ---
 
